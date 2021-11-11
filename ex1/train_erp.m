@@ -63,6 +63,15 @@ for e=1:length(ev_lats)
 end
 
 % train shrinkage LDA classifier (TODO: fill in)
+x_1 = features(ev_labels == -1,:);
+x_2 = features(ev_labels == +1,:);
+mu_1 = mean(x_1);
+mu_2 = mean(x_2);
+sigma_1 = cov(x_1 - mu_1);
+sigma_2 = cov(x_2 - mu_2);
+s = 1;
+sigma_hat_1 = (1 - lambda) * sigma_1 + lambda * s * eye(size(features,2));
+sigma_hat_2 = (1 - lambda) * sigma_2 + lambda * s * eye(size(features,2));
 
-model.w = ...
-model.b = ...
+model.w = (sigma_hat_1 + sigma_hat_2)\(mu_2 - mu_1)';
+model.b = -model.w' * (mu_1 + mu_2)' / 2;
