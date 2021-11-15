@@ -48,5 +48,5 @@ Here, we create different variations of the basic BCI design by changing differe
 | 0.5          | ![slda1train](ex2/ex2_phase2_slda1_train_results.png)   | ![slda1test](ex2/ex2_phase2_slda1_test_results.png)   |
 
 
-Based on the error rate of the testing set, we can see that a lambda value of 0.1 produced the best results amongst the different approaches.
+Based on the error rate of the testing set, we can see that a lambda value of 0.1 produced the best results among the different approaches.
 
