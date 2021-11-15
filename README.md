@@ -34,7 +34,7 @@ To understand the the model, the model weights can be visualized as spatial filt
 
 While the previous analyses were performed offline, we can also adapt an online implementation to see how the model performs in real-time. The following plot shows the distribution of the probability for each class as the test data set is passed into the classifier in real-time. Class 1 corresponds to the non-error events, while class 2 corresponds to the error events. Here we can see that the classifier predicts a higher probability for the non-error events most of the time, and for the error events infrequently.
 
-![online visualization](ex2_phase1_online.gif)
+![online visualization](ex2/ex2_phase1_online.gif)
 
 
 ### Phase 2
