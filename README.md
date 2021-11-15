@@ -6,7 +6,7 @@ This respository shows the solutions for the exercises from the BCI course from 
 
 Implementation of an ERP-based BCI to detect error trials during a flanker task, where the subject is asked to press the left/right button based on the direction of the center arrow. The subject makes frequent errors (25%) becuase of the "flanker" arrows.
 
-![flanker task](ex1_flanker.png)
+![flanker task](ex1/flanker.png)
 
 A windowed approach is used to extract features as the weighted average across channels during the following time windows (seconds): [0.25 0.3; 0.3 0.35; 0.35 0.4; 0.4 0.45; 0.45 0.5; 0.5 0.6].
 
@@ -46,4 +46,7 @@ Here, we create different variations of the basic BCI design by changing differe
 | 0.1          | ![slda01train](ex2/ex2_phase2_slda01_train_results.png) | ![slda01test](ex2/ex2_phase2_slda01_test_results.png) |
 | 0.5          | ![slda05train](ex2/ex2_phase2_slda05_train_results.png) | ![slda05test](ex2/ex2_phase2_slda05_test_results.png) |
 | 0.5          | ![slda1train](ex2/ex2_phase2_slda1_train_results.png)   | ![slda1test](ex2/ex2_phase2_slda1_test_results.png)   |
+
+
+Based on the error rate of the testing set, we can see that a lambda value of 0.1 produced the best results amongst the different approaches.
 
