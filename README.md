@@ -10,12 +10,11 @@ Implementation of an ERP-based BCI to detect error trials during a flanker task,
 
 A windowed approach is used to extract features as the weighted average across channels during the following time windows (seconds): [0.25 0.3; 0.3 0.35; 0.35 0.4; 0.4 0.45; 0.45 0.5; 0.5 0.6].
 
-<img src="ex1/ERP_1.png" alt="ERP 1" width="400">
-<img src="ex1/ERP_2.png" alt="ERP 2" width="400">
+<img src="ex1/ERP_1.png" alt="ERP 1" width="400"> <img src="ex1/ERP_2.png" alt="ERP 2" width="400">
 
 The LDA classifer was used, which creates a linear mapping from the input to the output using the formula below.
 
-<img src="ex1/lda_train_1.png" alt="LDA formula parameters" width="400">
+<img src="ex1/lda_train_1.png" alt="LDA formula parameters" width="600">
 <img src="ex1/lda_train_2.png" alt="LDA training formula" width="150">
 
 However, since we only have few available trials and our data has high dimensionality, this can make the covariance calculation unstable. To address this, we can apply shrinkage to regularize the estimator.
@@ -68,12 +67,11 @@ Based on the error rate of the testing set, we can see that a lambda value of 0.
 
 Implementation of a CSP-based BCI to classify between imagined left- vs right-hand movemnets from the BCI competition IVb dataset. Each trial begins with 3 seconds of a visual cue of a letter (either L or R), followed by the imagery task, and ends with a blank screen for 3.5 seconds.
 
-![visual](ex3/cue.png)
+<img src="ex3/cue.png" alt="visual cue" width="400">
 
 In this exercise, we try to detect Event-Related Synchronization / Desynchronization (ERS/D), which refers to the attenuation of motor idle rhythms during an event. In the following time-frequency plots, we can see an increase in power at around 10 Hz for left-hand (red) and right-hand (green) motor imagery. These would be captured in the input features to the BCI.
 
-<img src="ex3/timefrequency1.png" alt="Time frequency plot 1" width="400">
-<img src="ex3/timefrequency2.png" alt="Time frequency plot 2" width="400">
+<img src="ex3/timefrequency1.png" alt="Time frequency plot 1" width="400"> <img src="ex3/timefrequency2.png" alt="Time frequency plot 2" width="400">
 
 The Common Spatial Patterns (CSP) algorithm works by learning spatial filters that maximizes the variance of the filtered signal variance for one class and minimizes that of the other class. The spatial filters can be thought of as a transformation that projects the signal to a space where the variance of the classes are different.
 
