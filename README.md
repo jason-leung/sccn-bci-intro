@@ -10,21 +10,21 @@ Implementation of an ERP-based BCI to detect error trials during a flanker task,
 
 A windowed approach is used to extract features as the weighted average across channels during the following time windows (seconds): [0.25 0.3; 0.3 0.35; 0.35 0.4; 0.4 0.45; 0.45 0.5; 0.5 0.6].
 
-![ERP 1](ex1/ERP_1.png)
-![ERP 2](ex1/ERP_2.png)
+![ERP 1](ex1/ERP_1.png | width=400)
+![ERP 2](ex1/ERP_2.png | width=400)
 
 The LDA classifer was used, which creates a linear mapping from the input to the output using the formula below.
 
-![LDA formula parameters](ex1/lda_train_1.png)
-![LDA training formula](ex1/lda_train_2.png)
+![LDA formula parameters](ex1/lda_train_1.png | width=400)
+![LDA training formula](ex1/lda_train_2.png | width=150)
 
 However, since we only have few available trials and our data has high dimensionality, this can make the covariance calculation unstable. To address this, we can apply shrinkage to regularize the estimator.
 
-![LDA shrinkage](ex1/lda_train_3.png)
+![LDA shrinkage](ex1/lda_train_3.png | width=250)
 
 For classification, we simply apply the linear mapping and the sign of the result tells us which class the trial belongs to.
 
-![LDA classification](ex1/lda_test.png)
+![LDA classification](ex1/lda_test.png | width=200)
 
 By applying the shrinkage LDA approach, we achieved a mis-classification rate of 8.06% on the test set.
 
@@ -72,7 +72,9 @@ Implementation of a CSP-based BCI to classify between imagined left- vs right-ha
 
 In this exercise, we try to detect Event-Related Synchronization / Desynchronization (ERS/D), which refers to the attenuation of motor idle rhythms during an event. In the following time-frequency plots, we can see an increase in power at around 10 Hz for left-hand (red) and right-hand (green) motor imagery. These would be captured in the input features to the BCI.
 
-![time frequency plot 2](ex3/timefrequency1.png) ![time frequency plot 2](ex3/timefrequency2.png)
+![time frequency plot 2](ex3/timefrequency1.png | width=400)
+
+![time frequency plot 2](ex3/timefrequency2.png | width=400)
 
 The Common Spatial Patterns (CSP) algorithm works by learning spatial filters that maximizes the variance of the filtered signal variance for one class and minimizes that of the other class. The spatial filters can be thought of as a transformation that projects the signal to a space where the variance of the classes are different.
 
@@ -89,11 +91,11 @@ To use the CSP algorithm to learn spatial filters for the oscillatory processes,
 
 By applying the generalized eigenvalue problem, we can solve for the spatial filters.
 
-![CSP eigenvalue problem](ex3/csp_eigen.png)
+![CSP eigenvalue problem](ex3/csp_eigen.png | width=300)
 
 To make a prediction using the CSP approach, we essentially apply spatial filtering, calculate the log-variance, and apply a linear or non-linear classifier.
 
-![CSP prediction function](ex3/csp_predict.png)
+![CSP prediction function](ex3/csp_predict.png | width=200)
 
 CSP-based BCIs typically operate on a band-pass filtered signal. For this exercise, we bandpass-filter our data from 7 to 30 Hz using an FIR filter.
 
@@ -101,7 +103,7 @@ CSP-based BCIs typically operate on a band-pass filtered signal. For this exerci
 
 This can be implemented as a temporal filter, T, that is applied to the prediction function.
 
-![CSP prediction function with temporal filter](ex3/csp_predict_temporal.png)
+![CSP prediction function with temporal filter](ex3/csp_predict_temporal.png | width=250)
 
 By applying the above, we obtain a mis-classification rate of 12.8% on the test set.
 
